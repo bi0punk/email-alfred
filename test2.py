@@ -57,26 +57,25 @@ def get_emails(num_emails):
             if name == 'From':
                 sender = values['value']
         
-        # Almacena el mensaje en el diccionario 'email_dict_unread' si no está leído
-        if is_read != 'READ':
-            email_dict_unread[i+1] = {
-                'Asunto': subject,
-                'Remitente': sender,
-                'Estado de lectura': is_read,
-                'Hora de recepción': received_time
-            }
-    
+        # Almacena el mensaje en el dicciona
+        email_dict[i+1] = {
+            'Asunto': subject,
+            'Remitente': sender,
+            'Estado de lectura': is_read,
+            'Hora de recepción': received_time
+        }
     print("-------------------------------")
-    print(email_dict_unread)
-    print("-------------------------------")
-    
-    if len(email_dict_unread) == 0:
+    print(email_dict[1]['Estado de lectura'])
+    correos_nuevos = {
+        
+    }
+    ultimo_email = email_dict[1]['Estado de lectura']
+    if ultimo_email == 'READ':
         print("Sin mensajes nuevos")
     else:
         print("Nuevos mensajes")
-    
-    return email_dict_unread
-
+    print("-------------------------------")
+    return email_dict
 # Solicita al usuario el número de correos a mostrar
 num_emails = int(input('Ingrese el número de correos a mostrar: '))
 # Obtiene el diccionario de correos electrónicos
