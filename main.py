@@ -71,8 +71,14 @@ def get_emails(num_emails):
             'Estado de lectura': is_read,
             'Hora de recepción': received_time
         }
-
-    print(email_dict[2]['Estado de lectura'])
+    print("-------------------------------")
+    print(email_dict[1]['Estado de lectura'])
+    ultimo_email = email_dict[1]['Estado de lectura']
+    if ultimo_email == 'READ':
+        print("Sin mensajes nuevos")
+    else:
+        print("Nuevos mensajes")
+    print("-------------------------------")
     return email_dict
 
     
@@ -89,8 +95,10 @@ emails_dict = get_emails(num_emails)
 
 
 # Imprime los correos electrónicos almacenados en el diccionario
-for email_num, email_info in emails_dict.items():
+""" for email_num, email_info in emails_dict.items():
     print(f'Correo #{email_num}')
+    print("-----------------------------------------------")
     for key, value in email_info.items():
         print(f'{key}: {value}')
-    print('---')
+    print('-----------------------------------------------')
+"""
