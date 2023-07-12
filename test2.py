@@ -34,16 +34,13 @@ def get_emails(num_emails):
     # Obtiene el servicio de la API de Gmail
     service = get_gmail_service()
     # Llama al método de la API para obtener los mensajes de la bandeja de entrada
-    results = service.users().messages().list(userId='me', labelIds=['INBOX']).execute()
+    results = service.users().messages().list(userId='me', labelIds=['INBOX'], maxResults=num_emails).execute()
     messages = results.get('messages', [])
     # Diccionario para almacenar los mensajes
     email_dict_unread = {}
 
     # Procesa los mensajes
     for i, message in enumerate(messages):
-        if i == num_emails:
-            break
-
         msg = service.users().messages().get(userId='me', id=message['id']).execute()
         email_data = msg['payload']['headers']
         is_read = 'UNREAD' if 'UNREAD' in msg['labelIds'] else 'READ'
@@ -57,27 +54,29 @@ def get_emails(num_emails):
             if name == 'From':
                 sender = values['value']
         
-        # Almacena el mensaje en el dicciona
-        email_dict[i+1] = {
+        # Almacena el mensaje en el diccionario
+        email_dict_unread[i+1] = {
             'Asunto': subject,
             'Remitente': sender,
             'Estado de lectura': is_read,
             'Hora de recepción': received_time
         }
     print("-------------------------------")
-    print(email_dict[1]['Estado de lectura'])
+    print(email_dict_unread[1]['Estado de lectura'])
     correos_nuevos = {
         
     }
-    ultimo_email = email_dict[1]['Estado de lectura']
+    ultimo_email = email_dict_unread[1]['Estado de lectura']
     if ultimo_email == 'READ':
         print("Sin mensajes nuevos")
     else:
         print("Nuevos mensajes")
     print("-------------------------------")
-    return email_dict
-# Solicita al usuario el número de correos a mostrar
-num_emails = int(input('Ingrese el número de correos a mostrar: '))
+    return email_dict_unread
+
+# Definir el número de correos a mostrar
+num_emails = 5
+
 # Obtiene el diccionario de correos electrónicos
 emails_dict = get_emails(num_emails)
 

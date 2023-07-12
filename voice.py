@@ -15,7 +15,7 @@ for voice in voices:
 
 # Cambiar la voz
 # Por ejemplo, puedes usar el índice 1 para seleccionar la segunda voz en la lista
-engine.setProperty('voice', voices[1].id)
+engine.setProperty('voice', voices[2].id)
 
 # Cambiar la velocidad de habla (valor predeterminado: 200)
 engine.setProperty('rate', 150)
