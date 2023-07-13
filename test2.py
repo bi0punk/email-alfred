@@ -6,6 +6,11 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
 
+from gtts import gTTS
+import pygame
+import time
+
+
 # Escopos necesarios para acceder a la bandeja de entrada de Gmail
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 
@@ -75,7 +80,7 @@ def get_emails(num_emails):
     return email_dict_unread
 
 # Definir el número de correos a mostrar
-num_emails = 5
+num_emails = 1
 
 # Obtiene el diccionario de correos electrónicos
 emails_dict = get_emails(num_emails)
