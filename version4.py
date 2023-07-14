@@ -15,7 +15,7 @@ import threading
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 TOKEN_FILE = 'token.pickle'
 NUM_EMAILS = 1
-TIMER_DELAY = 420  # Tiempo de espera en segundos
+TIMER_DELAY = 450  # Tiempo de espera en segundos
 
 def get_gmail_service():
     creds = None
