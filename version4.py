@@ -15,7 +15,7 @@ import threading
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 TOKEN_FILE = 'token.pickle'
 NUM_EMAILS = 1
-TIMER_DELAY = 450  # Tiempo de espera en segundos
+TIMER_DELAY = 600  # Tiempo de espera en segundos
 
 def get_gmail_service():
     creds = None
@@ -94,6 +94,7 @@ def leer_remitentes():
                                             '¿Le interesa conocer los emisores, jefe?',
                                             'Jefe, ¿debo examinar los emisores relacionados?',
                                             'Jefe, ¿quiere que me encargue de revisar los remitentes?']))
+    
 
 def check_email_notifications():
     while True:
@@ -124,6 +125,7 @@ def check_email_notifications():
                 'Señor, ha recibido mensajes frescos.',
                 'Tiene mensajes sin leer jefe']))
             leer_remitentes()
+
             print("Leyendo...")
         else:
             print("Sin mensajes nuevos")
