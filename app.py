@@ -73,6 +73,7 @@ def get_new_emails():
 #Funcion para reproducir txto a voz
 def play_notification_message(message):
     tts = gTTS(message, lang='es')
+    speed = 1.5
     filename = "output.mp3"
     tts.save(filename)
     pygame.mixer.init()
