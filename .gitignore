@@ -24,9 +24,12 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+
+#others
 client_secret.json
 token.pickle
 MANIFEST
+.mp3
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
